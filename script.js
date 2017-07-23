@@ -17,15 +17,21 @@ function printCanvas(){
 
     size_ = 0;
     cols = [];
+
     var speed = parseInt($("#speed").val());
     var size = parseInt($("#cubesSize").val());
-    if(parseInt($("#cubesSize").val()) < 3){
+
+    if(parseInt($("#cubesSize").val()) <= 3){
       speed = 5;
     }
-    if(size < 1){
-      size = 1;
+
+    if(size >= $("#canvasWidth").val() || size >= $("#canvasWidth").val() || size < 1){
+      size = 10;
     }
+
     draw(size,speed);
+
+    $("#cCount").text("Cube count: " + parseInt(($("#canvasWidth").val() * $("#canvasHeight").val()) / size));
 }
 
 
@@ -54,7 +60,6 @@ if(sl >= 5){await sleep(sl);}
 }
 
 function mouseOver(e) {
-
     var rect = canvas.getBoundingClientRect(),
         mouseX = e.clientX - rect.left,
         mouseY = e.clientY - rect.top,
@@ -71,9 +76,11 @@ function mouseOver(e) {
       }
 
         var val = cols.find(cor => cor.cor === coor_).col;
+
         $('#box').text("R: " + val[0] + " G: " + val[1] + " B: " + val[2]);
         $('#box').css({'color':'rgb('+val[0]+','+val[1]+','+val[2]+')'});
 }
+
 
 function show(){
   $("#box").fadeIn();
