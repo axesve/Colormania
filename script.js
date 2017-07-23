@@ -11,7 +11,8 @@ function printCanvas(){
   canvas.setAttribute("style","background-color:rgb(55,55,55)");
   canvas.onmousemove = mouseOver;
   canvas.onmouseover = show;
-  canvas.onmouseenter = hide;
+  canvas.onsemouseleave = hide;
+
   $(canvas).appendTo("body");
 
     size_ = 0;
