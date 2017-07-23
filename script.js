@@ -18,10 +18,14 @@ function printCanvas(){
     size_ = 0;
     cols = [];
     var speed = parseInt($("#speed").val());
+    var size = parseInt($("#cubesSize").val());
     if(parseInt($("#cubesSize").val()) < 3){
       speed = 5;
     }
-    draw(parseInt($("#cubesSize").val()),speed);
+    if(size < 1){
+      size = 1;
+    }
+    draw(size,speed);
 }
 
 
