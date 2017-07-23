@@ -10,8 +10,8 @@ function printCanvas(){
   canvas.setAttribute("style", "position: absolute;");
   canvas.setAttribute("style","background-color:rgb(55,55,55)");
   canvas.onmousemove = mouseOver;
-  canvas.onmouseover = show;
-  canvas.onsemouseleave = hide;
+  canvas.onmouseenter = show;
+  canvas.onmouseleave = hide;
 
   $(canvas).appendTo("body");
 
