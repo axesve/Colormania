@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alot of colors</title>
+<script src="jquery.js"></script>
+<script src="script.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+</head>
+<style>
+
+body{font-family: 'Roboto Mono', monospace; user-select: none; -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none; -ms-user-select: none;user-select: none;background-color: rgb(33,33,33); width: 100%; height: 100%; margin:0; margin-top: 20px; padding:0; text-align: center; overflow: hidden;}
+#box{z-index: 1; word-break: break-all; text-align: center; border-radius: 5px;background-color: rgb(55,55,55);border:2px solid rgba(255,255,255,0.8);display: inline-block;padding: 10px;position: absolute;left:-500px;color:white;}
+canvas{display: inline; padding: 0; margin:10px; float:right;}
+
+.settings{
+  font-family: 'Roboto Mono', monospace;
+  position: absolute;
+  left:0;
+  color:white;
+  background-color: rgb(55,55,55);
+  padding: 20px;
+  font-size:20px;
+  z-index: 0;
+}
+.settings input{
+  margin: 10px;
+  font-size:15px;
+font-family: 'Roboto Mono', monospace;
+padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 5px; background-color:white;
+border: none;
+}
+
+button{cursor: pointer; font-family: 'Roboto Mono', monospace; border:none; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 5px; background-color:white;}
+
+</style>
+<body>
+  <div id="box"></div>
+  <div class="settings">
+    <h1>Settings</h1>
+    <label for="canvasWidth">Canvas width</label><br>
+    <input id="canvasWidth" placeholder="Width of canvas" value="600"></input><br>
+    <label for="canvasHeight">Canvas Height</label><br>
+    <input id="canvasHeight" placeholder="Height of canvas" value="600"></input><br>
+    <label for="cubesSize">Cube size</label><br>
+    <input id="cubesSize" placeholder="Size of cubes" value="10"></input><br>
+    <label for="speed">Speed (in milliseconds)</label><br>
+    <input id="speed" placeholder="Speed of spawning" value="0"></input><br>
+    <button onclick="changeSize()">Generate</button>
+  </div>
+</body>
+</html>
