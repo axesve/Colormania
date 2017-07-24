@@ -8,19 +8,20 @@
 </head>
 <style>
 
-body{font-family: 'Roboto Mono', monospace; user-select: none; -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none; -ms-user-select: none;user-select: none;background-color: rgb(33,33,33); width: 100%; height: 100%; margin:0; margin-top: 20px; padding:0; text-align: center; overflow: hidden;}
-#box{z-index: 1; word-break: break-all; text-align: center; border-radius: 5px;background-color: rgb(55,55,55);border:2px solid rgba(255,255,255,0.8);display: inline-block;padding: 10px;position: absolute;left:-500px;color:white;}
-canvas{display: inline; padding: 0; margin:10px; float:right;}
+body{font-family: 'Roboto Mono', monospace; user-select: none; -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none; -ms-user-select: none;user-select: none; background-color: rgb(33,33,33);  margin:0; margin-top: 20px; padding:0;  overflow: visible;}
+#box{z-index: 1; word-break: break-all; text-align: center; width: 200px; border-radius: 5px;background-color: rgb(55,55,55);border:2px solid rgba(255,255,255,0.8);display: inline-block;padding: 10px;position: absolute;left:-500px;color:white;}
+canvas{display: inline-block; padding: 0; margin:10px; margin-left: 150px; float:left; position: absolute;}
 
 .settings{
   font-family: 'Roboto Mono', monospace;
-  position: absolute;
-  left:0;
   color:white;
   background-color: rgb(55,55,55);
   padding: 20px;
   font-size:20px;
   z-index: 0;
+  float: left;
+  display: inline-block;
+  text-align: center;
 }
 .settings input{
   margin: 10px;
@@ -47,8 +48,10 @@ button:hover{background-color: rgb(230,230,230);}
     <input id="speed" placeholder="Speed of spawning" value="0"></input><br>
     <button onclick="changeSize()">Generate</button>
     <h2 id="cCount">Cube count: </h2>
+    <h2 id="probability">Probability: </h2>
+    <h2 id="duplicates">Duplicates: </h2>
   </div>
-  <div style="position:absolute; left:0; bottom:0;">
+  <div style="position:fixed; left:0; bottom:0;">
     <a href="https://twitter.com/axesve" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @axesve</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   </div>

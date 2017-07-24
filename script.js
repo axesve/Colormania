@@ -26,37 +26,67 @@ function printCanvas(){
     }
 
     if(size >= $("#canvasWidth").val() || size >= $("#canvasWidth").val() || size < 1){
-      size = 10;
+     size = 10;
     }
 
     draw(size,speed);
+    var totalCubes = parseInt(($("#canvasWidth").val()/size * $("#canvasHeight").val()) / size);
+    $("#cCount").text("Cube count: " + totalCubes);
+    $("#probability").text("Probability: " + totalCubes / 16581375);
 
-    $("#cCount").text("Cube count: " + parseInt(($("#canvasWidth").val() * $("#canvasHeight").val()) / size));
+    $("body").width($("#canvasWidth").val());
 }
 
 
 var size_ = 0;
 var cols = [];
+var colors = [];
 
 async function draw(size,sl){
+colors = [];
 size_ += size;
+
 var ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 for (var i = 0; i < canvas.width; i+=size) {
+var color = randomNum(0,255);
+ctx.fillStyle = 'rgb('+color[0]+', '+color[1]+', '+color[2]+')';
 
 if(sl >= 5){await sleep(sl);}
-  var color = randomNum(0,255);
-  ctx.fillStyle = 'rgb('+color[0]+', '+color[1]+', '+color[2]+')';
-  for (var y = 0; y < canvas.height; y+=size) {
 
-  var color = randomNum(0,255);
+  for (var y = 0; y < canvas.height; y+=size) {
+    var color = randomNum(0,255);
   ctx.fillStyle = 'rgb('+color[0]+', '+color[1]+', '+color[2]+')';
 
   ctx.fillRect(i,y,size,size);
+  colors.push(JSON.stringify(color));
 
   var cords = {cor:parseInt((i - size_ * 0.5)/size_ + 0.5) + "-" + parseInt((y - size_ * 0.5)/size_ + 0.5), col:color};
     cols.push(cords);
   }
 }
+
+findDuplicate();
+
+}
+
+var duplicates = 0;
+
+function findDuplicate(){
+duplicates = 0;
+  colors.slice().sort();
+
+  var results = [];
+for (var i = 0; i < colors.length - 1; i++) {
+    if (colors[i + 1] == colors[i]) {
+        results.push(colors[i]);
+        duplicates++;
+    }
+}
+
+$("#duplicates").text("Duplicates: " + duplicates);
+
 }
 
 function mouseOver(e) {
@@ -70,9 +100,9 @@ function mouseOver(e) {
 
 
         if(mouseY < 100){
-          $('#box').css({'top':mouseY+(rect.top+100),'left':mouseX+(rect.left-70)});
+            $('#box').css({'top':mouseY+60,'left':mouseX+550});
       }else{
-          $('#box').css({'top':mouseY+(rect.top-100),'left':mouseX+(rect.left-70)});
+          $('#box').css({'top':mouseY-60,'left':mouseX+550});
       }
 
         var val = cols.find(cor => cor.cor === coor_).col;
