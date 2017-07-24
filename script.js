@@ -33,7 +33,7 @@ function printCanvas(){
     draw(size,speed);
     var totalCubes = parseInt((($("#canvasWidth").val()/size) * ($("#canvasHeight").val()) / size));
     $("#cCount").text("Cube count: " + totalCubes);
-    $("#probability").text("Probability: " + totalCubes / 16581375);
+    $("#probability").text("Probability: " + (totalCubes / 16581375) * 100 + "%");
 
     $("body").width($("#canvasWidth").val());
 }
