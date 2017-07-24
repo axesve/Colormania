@@ -22,9 +22,6 @@ function printCanvas(){
     var speed = parseInt($("#speed").val());
     var size = parseInt($("#cubesSize").val());
 
-    if(parseInt($("#cubesSize").val()) <= 3 && speed < 5){
-      speed = 5;
-    }
 
     if(size >= $("#canvasWidth").val() || size >= $("#canvasWidth").val() || size < 1){
      size = 10;
@@ -47,8 +44,8 @@ async function draw(size,sl){
   complete = false;
   $("#status").css({"color":"rgb(155, 55, 55)"});
   $("#status").text("STATUS: spawning cubes");
-colors = [];
-size_ += size;
+  colors = [];
+  size_ += size;
 
 var ctx = canvas.getContext("2d");
 ctx.clearRect(0, 0, canvas.width, canvas.height);
