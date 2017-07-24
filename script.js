@@ -45,6 +45,7 @@ async function draw(size,sl){
   $("#status").css({"color":"rgb(155, 55, 55)"});
   $("#status").text("STATUS: spawning cubes");
   colors = [];
+  cols = [];
   size_ += size;
 
 var ctx = canvas.getContext("2d");
