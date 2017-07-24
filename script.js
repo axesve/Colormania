@@ -21,7 +21,7 @@ function printCanvas(){
     var speed = parseInt($("#speed").val());
     var size = parseInt($("#cubesSize").val());
 
-    if(parseInt($("#cubesSize").val()) <= 3){
+    if(parseInt($("#cubesSize").val()) <= 3 && speed < 5){
       speed = 5;
     }
 
