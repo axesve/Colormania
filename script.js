@@ -1,4 +1,5 @@
 var canvas = document.createElement("canvas");
+var complete = false;
 $(function(){
 printCanvas();
 });
@@ -43,6 +44,9 @@ var cols = [];
 var colors = [];
 
 async function draw(size,sl){
+  complete = false;
+  $("#status").css({"color":"rgb(155, 55, 55)"});
+  $("#status").text("STATUS: spawning cubes");
 colors = [];
 size_ += size;
 
@@ -73,12 +77,15 @@ findDuplicate();
 
 var duplicates = 0;
 
-function findDuplicate(){
-duplicates = 0;
+async function findDuplicate(){
+  $("#status").css({"color":"rgb(150, 155, 55)"});
+  $("#status").text("STATUS: finding duplicates");
+  await sleep(1);
+  duplicates = 0;
   colors.slice().sort();
 
   var results = [];
-for (var i = 0; i < colors.length - 1; i++) {
+  for (var i = 0; i < colors.length - 1; i++) {
     if (colors[i + 1] == colors[i]) {
         results.push(colors[i]);
         duplicates++;
@@ -86,10 +93,13 @@ for (var i = 0; i < colors.length - 1; i++) {
 }
 
 $("#duplicates").text("Duplicates: " + duplicates);
-
+$("#status").css({"color":"rgb(71, 155, 55)"});
+$("#status").text("Status: Complete");
+complete = true;
 }
 
 function mouseOver(e) {
+  if(complete == true){
     var rect = canvas.getBoundingClientRect(),
         mouseX = e.clientX - rect.left,
         mouseY = e.clientY - rect.top,
@@ -110,13 +120,16 @@ function mouseOver(e) {
         $('#box').text("R: " + val[0] + " G: " + val[1] + " B: " + val[2]);
         $('#box').css({'color':'rgb('+val[0]+','+val[1]+','+val[2]+')'});
 }
+}
 
 
 function show(){
+  if(complete == true)
   $("#box").fadeIn();
 
 }
 function hide(){
+  if(complete == true)
   $("#box").fadeOut();
 }
 
