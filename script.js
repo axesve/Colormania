@@ -100,6 +100,7 @@ complete = true;
 
 function mouseOver(e) {
   if(complete == true){
+    show();
     var rect = canvas.getBoundingClientRect(),
         mouseX = e.clientX - rect.left,
         mouseY = e.clientY - rect.top,
