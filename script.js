@@ -1,11 +1,14 @@
 var canvas = document.createElement("canvas");
 var complete = false;
+var size_ = 0;
+var cols = [];
+var colors = [];
+
 $(function(){
 printCanvas();
 });
 
 function printCanvas(){
-
   canvas.setAttribute("width", $("#canvasWidth").val());
   canvas.setAttribute("height", $("#canvasHeight").val());
   canvas.setAttribute("style", "position: absolute;");
@@ -17,7 +20,7 @@ function printCanvas(){
   $(canvas).appendTo("body");
 
     size_ = 0;
-    cols = [];
+
 
     var speed = parseInt($("#speed").val());
     var size = parseInt($("#cubesSize").val());
@@ -28,7 +31,7 @@ function printCanvas(){
     }
 
     draw(size,speed);
-    var totalCubes = parseInt(($("#canvasWidth").val()/size * $("#canvasHeight").val()) / size);
+    var totalCubes = parseInt((($("#canvasWidth").val()/size) * ($("#canvasHeight").val()) / size));
     $("#cCount").text("Cube count: " + totalCubes);
     $("#probability").text("Probability: " + totalCubes / 16581375);
 
@@ -36,9 +39,7 @@ function printCanvas(){
 }
 
 
-var size_ = 0;
-var cols = [];
-var colors = [];
+
 
 async function draw(size,sl){
   complete = false;
@@ -107,7 +108,6 @@ function mouseOver(e) {
         yIndex = Math.round((mouseY - size_ * 0.5) / size_);
         var coor_ = xIndex + "-" + yIndex;
 
-
         if(mouseY < 100){
             $('#box').css({'top':mouseY+60,'left':mouseX+550});
       }else{
@@ -147,5 +147,6 @@ function sleep(ms) {
 }
 
 function changeSize(){
+  if(complete == true)
   printCanvas();
 }
