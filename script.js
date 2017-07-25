@@ -41,7 +41,6 @@ function printCanvas(){
 
 
 
-
 async function draw(size,sl){
   complete = false;
   $("#status").css({"color":"rgb(155, 55, 55)"});
