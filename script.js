@@ -21,25 +21,20 @@ function printCanvas(){
 
     size_ = 0;
 
-
     var speed = parseInt($("#speed").val());
     var size = parseInt($("#cubesSize").val());
-
 
     if(size >= $("#canvasWidth").val() || size >= $("#canvasWidth").val() || size < 1){
      size = 10;
     }
 
     draw(size,speed);
+
     var totalCubes = parseInt((($("#canvasWidth").val()/size) * ($("#canvasHeight").val()) / size));
     $("#cCount").text("Cube count: " + totalCubes);
-
     $("#probability").text("Probability: " + (totalCubes / 16581375).toFixed(4) + "%");
-
     $("body").width($("#canvasWidth").val());
 }
-
-
 
 async function draw(size,sl){
   complete = false;
@@ -71,11 +66,9 @@ if(sl >= 5){await sleep(sl);}
 }
 
 findDuplicate();
-
 }
 
 var duplicates = 0;
-
 async function findDuplicate(){
   $("#status").css({"color":"rgb(150, 155, 55)"});
   $("#status").text("STATUS: finding duplicates");
