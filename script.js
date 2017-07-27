@@ -9,6 +9,9 @@ printCanvas();
 });
 
 function printCanvas(){
+  $.get("www.mydomain.com/?url=www.google.com", function(response) {
+    alert(response);
+});
   canvas.setAttribute("width", $("#canvasWidth").val());
   canvas.setAttribute("height", $("#canvasHeight").val());
   canvas.setAttribute("style", "position: absolute;");
