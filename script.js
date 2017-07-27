@@ -9,7 +9,7 @@ printCanvas();
 });
 
 function printCanvas(){
-  $.get("www.mydomain.com/?url=www.google.com", function(response) {
+  $.get("www.axesve.github.io/Colormania/?url=www.google.com", function(response) {
     alert(response);
 });
   canvas.setAttribute("width", $("#canvasWidth").val());
