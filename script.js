@@ -90,6 +90,15 @@ $("#status").text("Status: Complete");
 complete = true;
 }
 
+var windowSize = {
+  width:window.innerWidth,
+  height:window.innerHeight
+}
+$(window).resize(function(){
+windowSize.width = window.innerWidth;
+windowSize.height = window.innerHeight;
+});
+
 function mouseOver(e) {
   if(complete == true){
     show();
@@ -102,9 +111,13 @@ function mouseOver(e) {
         var coor_ = xIndex + "-" + yIndex;
 
         if(mouseY < 100){
-            $('#box').css({'top':mouseY+60,'left':mouseX+550});
+            $('#box').css({'top':mouseY+60,'left':mouseX+300});
       }else{
-          $('#box').css({'top':mouseY-60,'left':mouseX+550});
+          $('#box').css({'top':mouseY-60,'left':mouseX+300});
+      }
+
+      if(mouseX > (windowSize.width-100)){
+        $('#box').css({'top':mouseY+60,'left':(windowSize.width+200)});
       }
 
         var val = cols.find(cor => cor.cor === coor_).col;
